@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+  </head>
+
+<!-- Body Starts -->
+  <body>
+    <div class="centered">
+    <form class="form-horizontal" action='' method="GET">
+      <fieldset>
+          <h1 id="form">Iris Naive Bayes Classifier</h1>
+            <div class="in">
+            <input type="text" name="user_in" placeholder="Prediction" maxlength="500">
+            </div>
+            <!-- Button -->
+            <div class="controls">
+              <button class="btn btn-dark" value="Submit" method="get">Submit</button>
+            </div>
+      </fieldset>
+    </form>
+
+      <p> Prediction:
+        <br>
+        {{ prediction }}
+      </p>
+    </div>
+</body>
+
+</html>

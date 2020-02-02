@@ -1,0 +1,62 @@
+
+html, body{
+  padding: 0;
+  margin: 0;
+}
+html{
+  height: 100%;
+}
+body{
+  min-height: 100%;
+}
+
+form {
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.in {
+  padding-bottom: 10px;
+}
+
+.centered {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+p {
+  color:  black;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5em;
+}
+
+.btn {
+  display: block;
+  background-color: black;
+  color: white;
+  width: 6em;
+  margin-top: 5px;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.btn:hover {
+  background-color: red;
+}
+
+.btn.index {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+h1#form {
+  font-size: 30px;
+  font-family: 'Bebas Neue', cursive;
+  color: black;
+}

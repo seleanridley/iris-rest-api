@@ -1,13 +1,12 @@
 # PluralSight Machine Learning Engineer Intern Coding Assessment
 # Written By: Dominic Ridley
 
-from flask import Flask
-import requests
-import matplotlib.pyplot as plt
+import sklearn
 from sklearn import datasets
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import KFold, cross_val_score, cross_val_predict
 from sklearn import metrics
+import numpy as np
 import pickle
 
 #Loads Iris Dataset and declares variable
@@ -39,27 +38,36 @@ class NaiveBayesModel:
             n-splits: number of sets to split the data into
 
         Returns:
-            model_fit: naive bayes model fitted to the training set
-            predict: cross-validation predictions
+            model: naive bayes model fitted to the training set
         """
         X = self.X
         y = self.y
 
         k_fold = KFold(n_splits)
+        model = self.model
 
-        for train_index, test_index in k_fold.split(iris_X):
-            X_train, X_test = X[train_index], X[test_index]
-            y_train, y_test = y[train_index], y[test_index]
+        for train, test in k_fold.split(X):
+            model.fit(X[train], y[train])
+            p = model.predict( X[test] )
+            # Add line for scores
 
+        return model #return scores here?
 
-        model_fit = self.model.fit(X_train, y_train)
-        predict = cross_val_predict(model, iris_X, iris_y, cv=n_splits)
-        score = self.getAccuracyScore( model, iris_X, iris_y, n_splits)
+    def predict(self, model, arg):
+        """
+        Returns prediction of user input based on new trained model
 
+        Inputs:
+            model: trained model
+            args: user Inputs
+        Outputs:
+            prediction: A single value array with class label
+        """
+        prediction = model.predict(arg)
 
-        return model_fit, predict
+        return prediction
 
-    def getAccuracyScore(self, n_splits):
+    #def getAccuracyScore(self, n_splits):
         """
         Gives an cross-validated accuracy score for the new model.
 
@@ -69,14 +77,13 @@ class NaiveBayesModel:
         Returns:
             score: the accuracy score of the model.
         """
-        model, predict = kFoldCrossValidation(n_splits)
-        score = cross_val_score(model, self.X, self.y, cv=n_splits)
+    #    score = cross_val_score(model, self.X, self.y, cv=n_splits)
 
-        return score
+    #    return score
 
 if __name__ == "__main__":
     #Creates instance of NB model class
-    m = NaiveBayesModel(iris_X, iris_y)
+    m = NaiveBayesModel().kFoldCrossValidation(5)
 
-    #Saves
-    #pickle.dump([model, pre], open("nb_model.p", "wb"))
+    #Saves model
+    pickle.dump(m, open("nb_model.p", "wb"))
