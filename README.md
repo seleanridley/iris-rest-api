@@ -8,7 +8,7 @@ Dominic Ridley
 
 Dependencies:
 ```
-pip install flask scikit-learn numpy
+pip install flask flask_restful scikit-learn numpy
 ```
 
 ## Running the Model
